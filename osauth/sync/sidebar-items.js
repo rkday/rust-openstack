@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["SyncSession","A synchronous wrapper for an asynchronous session."]],"type":[["Result","A result of an OpenStack operation."]]});
