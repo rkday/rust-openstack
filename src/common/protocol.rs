@@ -19,6 +19,7 @@
 
 use std::collections::HashMap;
 
+use chrono::{DateTime, Utc};
 use eui48::MacAddress;
 use reqwest::Url;
 use serde::de::Error as DeserError;
@@ -70,4 +71,15 @@ where
     S: Serializer,
 {
     value.map(|m| m.to_hex_string()).serialize(serializer)
+}
+
+/// Deserialize an HTTP date.
+pub fn deser_http_date<'de, D>(des: D) -> ::std::result::Result<DateTime<Utc>, D::Error>
+where
+    D: Deserializer<'de>,
+{
+    let value: String = Deserialize::deserialize(des)?;
+    httpdate::parse_http_date(&value)
+        .map(From::from)
+        .map_err(|err| D::Error::custom(format!("Invalid HTTP date {}: {}", value, err)))
 }

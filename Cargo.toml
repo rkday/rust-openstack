@@ -15,20 +15,23 @@ edition = "2018"
 
 [features]
 
-default = ["compute", "image", "network"]
+default = ["compute", "image", "network", "object_storage"]
 compute = []
 image = []
 network = []
+object_storage = []
 
 [dependencies]
 
 chrono = { version = "^0.4", features = ["serde"] }
 eui48 = { version = "^0.4.0", features = ["serde"] }
 fallible-iterator = "^0.2.0"
+httpdate = "^0.3.2"
 ipnet = { version = "^2.0", features = ["serde"] }
 log = "^0.4"
 reqwest = "^0.9"
-osauth = "^0.2.3"
+#osauth = "^0.2.3"
+osauth = { git = "https://github.com/dtantsur/rust-osauth/" }
 osproto = "^0.1.2"
 serde = "^1.0"
 serde_derive = "^1.0"
