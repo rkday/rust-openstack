@@ -27,7 +27,6 @@ eui48 = { version = "^0.4.0", features = ["serde"] }
 fallible-iterator = "^0.2.0"
 ipnet = { version = "^2.0", features = ["serde"] }
 log = "^0.4"
-reqwest = "^0.9"
 osauth = "^0.2.3"
 osproto = "^0.1.2"
 serde = "^1.0"
@@ -35,6 +34,11 @@ serde_derive = "^1.0"
 serde_json = "^1.0"
 serde_yaml = "^0.8"
 waiter = "^0.1"
+
+[dependencies.reqwest]
+version = "^0.9"
+default-features = false
+features = ["rustls-tls"]
 
 [dev-dependencies]
 env_logger = "^0.6"
